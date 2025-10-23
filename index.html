@@ -12,25 +12,74 @@
 
   <main>
     <form id="formRemuneracion">
-      <label>Sueldo base ($):</label>
-      <input type="number" id="sueldoBase" required>
+      <!-- Datos de la liquidación y personales -->
+      <fieldset>
+        <legend>Datos de la liquidación y personales</legend>
+        <label for="fechaLiquidacion">Fecha de liquidación:</label>
+        <input type="date" id="fechaLiquidacion" required>
 
-      <label>AFP (%):</label>
-      <select id="afp">
-        <option value="10.5">AFP Modelo (10.5%)</option>
-        <option value="11">AFP Habitat (11%)</option>
-      </select>
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" id="nombre" placeholder="Nombre Apellido" required>
 
-      <label>Salud:</label>
-      <select id="salud">
-        <option value="7">Fonasa (7%)</option>
-        <option value="10">Isapre (10%)</option>
-      </select>
+        <label for="rut">RUT:</label>
+        <input type="text" id="rut" placeholder="12.345.678-9" required>
+
+        <label for="cargo">Cargo:</label>
+        <input type="text" id="cargo" placeholder="Cargo" required>
+
+        <label for="fechaIngreso">Fecha de ingreso:</label>
+        <input type="date" id="fechaIngreso" required>
+      </fieldset>
+
+      <!-- Haberes imponibles -->
+      <fieldset>
+        <legend>Haberes imponibles</legend>
+        <label for="sueldoBase">Sueldo base ($):</label>
+        <input type="number" id="sueldoBase" min="0" step="100" required>
+
+        <label for="comisiones">Comisiones ($):</label>
+        <input type="number" id="comisiones" min="0" step="100" value="0">
+
+        <label for="semanaCorrida">Semana corrida ($):</label>
+        <input type="number" id="semanaCorrida" min="0" step="100" value="0">
+        <small>La gratificación legal (25%) se calculará automáticamente.</small>
+      </fieldset>
+
+      <!-- Previsión y salud -->
+      <fieldset>
+        <legend>Previsión y salud</legend>
+        <label for="afpNombre">AFP:</label>
+        <select id="afpNombre" required>
+          <option value="0.46" data-afp="AFP Uno">AFP Uno (0,46% comisión)</option>
+          <option value="1.44" data-afp="AFP Capital">AFP Capital (1,44% comisión)</option>
+          <option value="1.44" data-afp="AFP Cuprum">AFP Cuprum (1,44% comisión)</option>
+          <option value="1.27" data-afp="AFP Habitat">AFP Habitat (1,27% comisión)</option>
+          <option value="0.58" data-afp="AFP Modelo">AFP Modelo (0,58% comisión)</option>
+          <option value="1.16" data-afp="AFP Planvital">AFP Planvital (1,16% comisión)</option>
+          <option value="1.45" data-afp="AFP Provida">AFP Provida (1,45% comisión)</option>
+        </select>
+
+        <label for="salud">Salud:</label>
+        <select id="salud" required>
+          <option value="7" data-salud="Fonasa">Fonasa (7%)</option>
+          <option value="10" data-salud="Isapre">Isapre (10%)</option>
+        </select>
+      </fieldset>
+
+      <!-- Haberes no imponibles -->
+      <fieldset>
+        <legend>Haberes no imponibles</legend>
+        <label for="movilizacion">Movilización ($):</label>
+        <input type="number" id="movilizacion" min="0" step="100" value="0">
+
+        <label for="colacion">Colación ($):</label>
+        <input type="number" id="colacion" min="0" step="100" value="0">
+      </fieldset>
 
       <button type="submit">Calcular</button>
     </form>
 
-    <div id="resultado"></div>
+    <div id="resultado" class="resultado"></div>
   </main>
 
   <script src="script.js"></script>

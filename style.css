@@ -24,3 +24,107 @@ h1 {
   text-align: center;
   color: #333;
 }
+
+/* Form sections */
+fieldset {
+  border: 1px solid #ddd;
+  padding: 10px 15px 15px;
+  border-radius: 6px;
+  margin: 15px 0;
+}
+
+legend {
+  padding: 0 6px;
+  color: #333;
+  font-weight: bold;
+}
+
+button[type="submit"] {
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background: #1d4ed8;
+}
+
+.resultado {
+  margin-top: 24px;
+}
+
+/* Payslip layout */
+.liquidacion {
+  display: grid;
+  grid-template-areas:
+    "datos datos"
+    "imponibles descuentos"
+    "noimpo totales";
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.liquidacion section {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px 14px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+
+.datos-personales { grid-area: datos; }
+.haberes-imponibles { grid-area: imponibles; }
+.descuentos { grid-area: descuentos; }
+.haberes-no-imponibles { grid-area: noimpo; }
+.totales { grid-area: totales; }
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.encabezado h3 {
+  margin: 0;
+}
+
+.grid-datos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+}
+
+.liquidacion h4 {
+  margin: 4px 0 10px;
+  color: #111827;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px dashed #e5e7eb;
+  font-size: 0.95rem;
+}
+
+.row:last-child { border-bottom: none; }
+.row.total { font-weight: 600; }
+.row.enfasis { font-weight: 700; font-size: 1.05rem; }
+
+@media (max-width: 720px) {
+  main { max-width: 94%; }
+  .liquidacion {
+    grid-template-areas:
+      "datos"
+      "imponibles"
+      "descuentos"
+      "noimpo"
+      "totales";
+    grid-template-columns: 1fr;
+  }
+  .grid-datos { grid-template-columns: 1fr; }
+}
